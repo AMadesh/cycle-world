@@ -1,0 +1,100 @@
+*{
+    box-sizing: border-box;
+  }
+  
+  #nav:hover{
+    background-color: rgb(0, 157, 255);
+  }
+  
+     
+     .marquee{
+      background-color: rgb(249, 2, 2);
+      color: azure;
+      margin-top: 20px;
+     }
+  
+     #gif{
+      position:relative;
+      animation: mymove 10s ;
+      animation-timing-function: ease;
+      width: 150px;
+      height: 150px;
+      margin-top: 100px;
+      margin-right: 1650px;
+      animation-iteration-count: infinite;
+      
+    }
+    @keyframes mymove{ 
+      from{left: -200px}
+      to{left:1650px}
+    }
+    #con{
+      margin-right: 30px;
+    }
+    #con:hover{
+      width: 36px;
+      height: 36px;
+    }
+  
+  
+    #filter{
+      float:right ;
+      margin-right: 50px;
+    }
+  
+  
+    .col-sm-6 {
+      position: relative;
+      width: 50%;
+    }
+    
+    .blue {
+      opacity: 1;
+      display: block;
+      transition: .5s ease;
+      backface-visibility: hidden;
+    }
+    
+    .types {
+      transition: .5s ease;
+      opacity: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      margin-bottom: 100px;
+    }
+    
+    .col-sm-6:hover .blur {
+    filter: brightness(25%);
+     
+    }
+    
+    .col-sm-6:hover .types {
+      opacity: 1;
+      margin-bottom: 200px;
+    }
+    
+    .texts {
+      color: white;
+      font-style: italic;
+      
+      
+    }
+    .texts:hover{
+      text-decoration-line:none ;
+    }
+  
+
+
+
+
+
+
+ 
+  
+
+    
+        
+   

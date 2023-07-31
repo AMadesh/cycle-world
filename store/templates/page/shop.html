@@ -1,0 +1,659 @@
+{% extends 'page/layouts/main.html' %}
+
+{% block title %}
+Shop | Online Shopping
+{% endblock title%}
+
+{% block content %}
+{% load static %}
+
+<div class="container move">
+  <div class="row">
+    <div class="col-sm-6">
+      <a href="/childs"><img src="{% static 'images/cycle31.jpg' %}" class="blur" class="rounded" width="500px"
+          height="350px"></a>
+      <div class="carousel-caption">
+        <h3 class="types">
+          <p class="texts">Children</p>
+        </h3>
+      </div>
+    </div>
+
+
+    <div class="col-sm-6">
+      <a href="/men"><img src="{% static 'images/cycle24.jpg' %}" class="blur" class="rounded" width="500px"
+          height="350px"></a>
+      <div class="carousel-caption">
+        <h3 class="types">
+          <p class="texts">Men</p>
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row ">
+    <div class="col-sm-6">
+      <a href="/women"><img src="{% static 'images/cycle30.jpg' %}" class="blur" class="rounded" width="500px"
+          height="350px"></a>
+      <div class="carousel-caption">
+        <h3 class="types">
+          <p class="texts">Women</p>
+        </h3>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <a href="/adventures"><img src="{% static 'images/cycle18.avif' %}" class="blur" class="rounded" width="500px"
+          height="350px"></a>
+      <div class="carousel-caption">
+        <h3 class="types">
+          <p class="texts">Adventures</p>
+        </h3>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+
+
+
+
+<div id="filter">
+  <div>
+    <h3>Filter</h3>
+    <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown">categories</button>
+    <div class="dropdown-menu">
+      <ul class="navbar-nav container">
+        <li><a href="/men">Men</a></li>
+        <li><a href="/women">Women</a></li>
+        <li><a href="/childs">Child</a></li>
+        <li><a href="/adventures">Adventures</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+  <h3>Brand</h3>
+  <div>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">Company</button>
+    <div class="dropdown-menu">
+      <input type="checkbox" id="avon" value="avon">
+      <label for="avon">Avon</label><br>
+      <input type="checkbox" id="bianchi" value="bianchi">
+      <label for="bianchi">Bianchi</label><br>
+      <input type="checkbox" id="bmc" value="bmc">
+      <label for="bmc">BMC</label><br>
+      <input type="checkbox" id="cervelo" value="cervelo">
+      <label for="cervelo">Cervelo</label><br>
+      <input type="checkbox" id="colnago" value="colnago">
+      <label for="colnago">Colnago</label><br>
+      <input type="checkbox" id="hero" value="hero">
+      <label for="hero">Hero</label><br>
+      <input type="checkbox" id="santa" value="santa">
+      <label for="santa">Santa</label><br>
+      <input type="checkbox" id="scott" value="scott">
+      <label for="scott">Scott</label><br>
+      <input type="checkbox" id="trek" value="trek">
+      <label for="terk">Trek</label><br>
+      <input type="checkbox" id="atlas" value="atlas">
+      <label for="atlas">Atlas</label><br>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+<div style="margin-left: 20px; float: left;">
+  <h3>Under Process</h3>
+  <button type="button" class="btn btn-outline-success dropdown-toggle" data-toggle="dropdown">Most
+    Relevant</button>
+  <div class="dropdown-menu">
+    <input type="checkbox" id="cycle" name="company1" value>
+    <label for="company1">price:Low to High</label><br>
+    <input type="checkbox" id="cycle" name="company2" value>
+    <label for="company2">Price:High to Low</label><br>
+    <input type="checkbox" id="cycle" name="company3" value>
+    <label for="company3">Rating</label><br>
+    <input type="checkbox" id="cycle" name="company4" value>
+    <label for="company4">Popular</label><br>
+    <input type="checkbox" id="cycle" name="company5" value>
+    <label for="company5">Cheap and Best</label>
+  </div>
+
+  <div>
+    <h3>Accessories</h3>
+    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">Safty spare</button>
+    <div class="dropdown-menu">
+      <input type="checkbox" id="helmet" value="helmet">
+      <label for="helmet">Helmet</label><br>
+      <input type="checkbox" id="vest" value="vest">
+      <label for="vest"> Vest</label><br>
+      <input type="checkbox" id="jackets" value="jackets">
+      <label for="jackets">Jackets</label><br>
+      <input type="checkbox" id="cage" value="cage">
+      <label for="cage"> cage</label><br>
+      <input type="checkbox" id="gloves" value="gloves">
+      <label for="gloves"> Gloves</label><br>
+    </div>
+  </div>
+</div>
+</form>
+
+<br>
+
+
+
+
+<div class="container">
+  <div class="slider-container">
+    <div class="left-arrow"><i class="fa fa-angle-left" style="font-size:24px"></i></div>
+    <div class="slider-content" id='slider-content'>
+      {% for item in cycless %}
+      <div class='slide'>
+        
+        <div class="media">
+          
+          <div class=" flowers">
+            <div data-category="{{item.show}}" class="container flower" style="height: 500px;">
+        
+              <div class="sale">
+                <div class="bg-danger">{{ item.name }}</div>
+                <img src="{{item.product_image.url}}" class="best">
+        
+        
+                <div>
+                  <span>
+                    SKU: </span>
+                  <span>
+                    {{item.sku}} </span>
+                </div>
+                <h5>CHASE {{ item.chase }}</h5>
+                <div>
+                  <div class=" star-rating" role="img" aria-label="Rated 0 out of 5">
+                    <span style="width:0%">Rated<div id="rate"><span class="fa fa-star checked"></span><span
+                          class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span
+                          class="fa fa-star checked"></span><span class="fa fa-star checked"></span></div></span>
+                  </div>
+        
+                </div>
+                <div>
+                  <div>
+                    <span class="price"><span class="th-price"><ins><span><bdi><span>₹</span>{{ item.original_price | stringformat:'d'}}</bdi></span></ins> <del><span
+                            class="woocommerce-Price-amount amount"><bdi><span>₹</span>{{ item.selling_price | stringformat:'d'}}</bdi></span></del></span></span>
+                  </div>
+                  <div><a href=" {% url 'product_details' item.name %}" class="buy"><button class="btn btn-primary"
+                        data-toggle="modal" data-target="#myModal{{item.sku}}"><span style="color: aliceblue;">View
+                          Detials</span></button></a>
+                  </div>
+                  <div><a href="{% url 'buys'  item.name %}"><button class="btn btn-success btn-sm">
+                    <svg class="th-icon-cart" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+                      <circle cx="7" cy="17" r="2"></circle>
+                      <circle cx="15" cy="17" r="2"></circle>
+                      <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
+                      V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
+                      C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z">
+                      </path>
+                    </svg>Buy Now</button></a></div>
+                </div>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      {% endfor %}
+    </div>
+    <div class="right-arrow"><i class="fa fa-angle-right" style="font-size:24px"></i></div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+  
+// This slider is for atleast 5 numbers of slides to n numbers of slides
+// you can go through by clicking left or right button or swipe left or right
+
+var sliders = document.querySelectorAll(".slide");
+var center = Math.floor(sliders.length / 2);
+var leftEndBack = center - 3 >= 0? center - 3 : undefined;
+var leftEnd = center - 2 >= 0? center - 2 : undefined;
+var leftMid = center - 1 >= 0? center - 1 : undefined;
+var rightMid = center + 1 < sliders.length? center + 1 : undefined;
+var rightEnd = center + 2 < sliders.length? center + 2 : undefined;
+var rightEndBack = center + 3 < sliders.length? center + 3 : undefined;
+let touchstartX = 0
+let touchendX = 0
+let container = document.getElementById('slider-content');
+
+if (leftEndBack != undefined) sliders[leftEndBack].classList.add("position-none");
+if (leftEnd != undefined) sliders[leftEnd].classList.add("position-1");
+if (leftMid != undefined) sliders[leftMid].classList.add("position-2");
+if (center != undefined) sliders[center].classList.add("position-3");
+if (rightMid != undefined) sliders[rightMid].classList.add("position-4");
+if (rightEnd != undefined) sliders[rightEnd].classList.add("position-5");
+if (rightEndBack != undefined) sliders[rightEndBack].classList.add("position-none");
+
+if (sliders.length > 0) $('.slide').addClass('position-none');
+
+
+function leftScroll(){
+  
+  if(leftEndBack != undefined){
+    sliders[leftEndBack].classList.remove("position-none");
+    sliders[leftEndBack].classList.add("position-1");
+  }
+  else{
+    sliders[rightEnd].classList.remove("position-none");
+    sliders[rightEnd].classList.add("position-1");
+  }
+  
+  if(leftEnd != undefined){
+    sliders[leftEnd].classList.remove("position-1");
+    sliders[leftEnd].classList.add("position-2");
+  }
+  
+  if(leftMid != undefined){
+    sliders[leftMid].classList.remove("position-2");
+    sliders[leftMid].classList.add("position-3");
+  }
+  
+  if(center != undefined){
+    sliders[center].classList.remove("position-3");
+    sliders[center].classList.add("position-4");
+  }
+  
+  if(rightMid != undefined){
+    sliders[rightMid].classList.remove("position-4");
+    sliders[rightMid].classList.add("position-5");
+  }
+  
+  if(rightEnd != undefined){
+    sliders[rightEnd].classList.remove("position-5");
+    sliders[rightMid].classList.add("position-none");
+  }
+  
+  leftEndBack != undefined ? leftEndBack-- : leftEndBack;
+  leftEnd != undefined? leftEnd-- : leftEnd;
+  leftMid != undefined? leftMid-- : leftMid;
+  center != undefined? center-- : center;
+  rightMid != undefined? rightMid-- : rightMid;
+  rightEnd != undefined? rightEnd-- : rightEnd;
+  rightEndBack != undefined ? rightEndBack-- : rightEndBack;
+  
+  if(leftEndBack != undefined && leftEndBack == -1)
+    leftEndBack = sliders.length - 1;
+  if(leftEnd != undefined && leftEnd == -1)
+    leftEnd = sliders.length - 1;
+  if(leftMid != undefined && leftMid == -1)
+    leftMid = sliders.length - 1;
+  if(center != undefined && center == -1)
+    center = sliders.length - 1;
+  if(rightMid != undefined && rightMid == -1)
+    rightMid = sliders.length - 1;
+  if(rightEnd != undefined && rightEnd == -1)
+    rightEnd = sliders.length - 1;
+  if(rightEndBack != undefined && rightEndBack == -1)
+    rightEndBack = sliders.length - 1;
+}
+
+function rightScroll(){
+  
+  if(leftEnd != undefined){
+    sliders[leftEnd].classList.remove("position-1");
+    sliders[leftEnd].classList.add("position-none");
+  }  
+  if(leftMid != undefined){
+    sliders[leftMid].classList.remove("position-2");
+    sliders[leftMid].classList.add("position-1");
+  }  
+  if(center != undefined){
+    sliders[center].classList.remove("position-3");
+    sliders[center].classList.add("position-2");
+  }  
+  if(rightMid != undefined){
+    sliders[rightMid].classList.remove("position-4");
+    sliders[rightMid].classList.add("position-3");
+  }  
+  if(rightEnd != undefined){
+    sliders[rightEnd].classList.remove("position-5");
+    sliders[rightEnd].classList.add("position-4");
+  }
+  if(rightEndBack != undefined){
+    sliders[rightEndBack].classList.remove("position-none");
+    sliders[rightEndBack].classList.add("position-5");
+  }
+  else if(leftEndBack != undefined){
+    sliders[leftEndBack].classList.remove("position-none");
+    sliders[leftEndBack].classList.add("position-5");
+  }
+  else{
+    sliders[leftEnd].classList.remove("position-none");
+    sliders[leftEnd].classList.add("position-5");
+  }
+  
+  leftEndBack != undefined? leftEndBack++ : leftEndBack;
+  leftEnd != undefined? leftEnd++ : leftEnd;
+  leftMid != undefined? leftMid++ : leftMid;
+  center != undefined? center++ : center;
+  rightMid != undefined? rightMid++ : rightMid;
+  rightEnd != undefined? rightEnd++ : rightEnd;
+  rightEndBack != undefined? rightEndBack++ : rightEndBack;
+
+  if(leftEndBack != undefined && leftEndBack == sliders.length)
+    leftEndBack = 0;
+  if(leftEnd != undefined && leftEnd == sliders.length)
+    leftEnd = 0;
+  if(leftMid != undefined && leftMid == sliders.length)
+    leftMid = 0;
+  if(center != undefined && center == sliders.length)
+    center = 0;
+  if(rightMid != undefined && rightMid == sliders.length)
+    rightMid = 0;
+  if(rightEnd != undefined && rightEnd == sliders.length)
+    rightEnd = 0;
+  if(rightEndBack != undefined && rightEndBack == sliders.length)
+    rightEndBack = 0;
+}
+
+class Swipe {
+    constructor(element) {
+        this.xDown = null;
+        this.yDown = null;
+        this.element = typeof(element) === 'string' ? document.querySelector(element) : element;
+
+        this.element.addEventListener('touchstart', function(evt) {
+            this.xDown = evt.touches[0].clientX;
+            this.yDown = evt.touches[0].clientY;
+        }.bind(this), false);
+
+    }
+
+    onLeft(callback) {
+        this.onLeft = callback;
+
+        return this;
+    }
+
+    onRight(callback) {
+        this.onRight = callback;
+
+        return this;
+    }
+
+    handleTouchMove(evt) {
+        if ( ! this.xDown || ! this.yDown ) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;
+        var yUp = evt.touches[0].clientY;
+
+        this.xDiff = this.xDown - xUp;
+        this.yDiff = this.yDown - yUp;
+
+        if ( Math.abs( this.xDiff ) > Math.abs( this.yDiff ) ) { 
+            if ( this.xDiff > 0 ) {
+                this.onLeft();
+            } else {
+                this.onRight();
+            }
+        } else {
+            if ( this.yDiff > 0 ) {
+                this.onUp();
+            } else {
+                this.onDown();
+            }
+        }
+
+        this.xDown = null;
+        this.yDown = null;
+    }
+
+    run() {
+        this.element.addEventListener('touchmove', function(evt) {
+            this.handleTouchMove(evt).bind(this);
+        }.bind(this), false);
+    }
+}
+
+var swiper = new Swipe(container);
+
+
+//left scroll
+$(".left-arrow").on("click", leftScroll);
+
+swiper.onRight(function () {
+  leftScroll();
+});
+swiper.run();
+
+// $(".position-2").on("click", function(){
+//   leftScroll();
+// });
+
+// $(".position-1").on("click", function(){
+//   leftScroll();
+//   leftScroll();
+// });
+
+
+
+// right scroll
+$(".right-arrow").on("click", rightScroll);
+
+swiper.onLeft(function () {
+  rightScroll();
+});
+swiper.run();
+
+// $(".position-4").on("click", function(){
+//   rightScroll();
+// });
+
+// $(".position-5").on("click", function(){
+//   rightScroll();
+//   rightScroll();
+// });
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  var $filterCheckboxes = $('input[type="checkbox"]');
+  var filterFunc = function () {
+
+    var selectedFilters = {};
+
+    $filterCheckboxes.filter(':checked').each(function () {
+
+      if (!selectedFilters.hasOwnProperty(this.name)) {
+        selectedFilters[this.name] = [];
+      }
+
+      selectedFilters[this.name].push(this.value);
+    });
+
+    // create a collection containing all of the filterable elements
+    var $filteredResults = $('.flower');
+
+    // loop over the selected filter name -> (array) values pairs
+    $.each(selectedFilters, function (name, filterValues) {
+
+      // filter each .flower element
+      $filteredResults = $filteredResults.filter(function () {
+
+        var matched = false,
+          currentFilterValues = $(this).data('category').split(' ');
+
+        // loop over each category value in the current .flower's data-category
+        $.each(currentFilterValues, function (_, currentFilterValue) {
+
+          // if the current category exists in the selected filters array
+          // set matched to true, and stop looping. as we're ORing in each
+          // set of filters, we only need to match once
+
+          if ($.inArray(currentFilterValue, filterValues) != -1) {
+            matched = true;
+            return false;
+          }
+        });
+
+        // if matched is true the current .flower element is returned
+        return matched;
+
+      });
+    });
+
+    $('.flower').hide().filter($filteredResults).show();
+  }
+
+  $filterCheckboxes.on('change', filterFunc);
+
+</script>
+
+
+
+<br>
+
+<div class="container-flute">
+  <ul class="th-block-features__list">
+    <li class="bloc" class="th-block-features__item ">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" color="orange" width="46" height="46" fill="currentColor"
+          class="bi bi-bicycle" viewBox="0 0 16 16">
+          <path
+            d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5zm1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139L5.5 6.943zM8 9.057 9.598 6.5H6.402L8 9.057zM4.937 9.5a1.997 1.997 0 0 0-.487-.877l-.548.877h1.035zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765l1.027-1.643zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53L11.55 8.623z" />
+        </svg>
+      </div>
+      <div class="th-block-features__item-info">
+        <div class="th-block-features__item-title">
+          Bicycle Insurance </div>
+        <div class="th-block-features__item-subtitle">
+          Toffee Insurance </div>
+      </div>
+    </li>
+
+    <li class="bloc" class="th-block-features__item">
+      <div class="th-block-features__item-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" color="orange" width="46" height="46" fill="currentColor"
+          class="bi bi-phone-flip" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M11 1H5a1 1 0 0 0-1 1v6a.5.5 0 0 1-1 0V2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a.5.5 0 0 1-1 0V2a1 1 0 0 0-1-1Zm1 13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2a.5.5 0 0 0-1 0v2a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-2a.5.5 0 0 0-1 0v2ZM1.713 7.954a.5.5 0 1 0-.419-.908c-.347.16-.654.348-.882.57C.184 7.842 0 8.139 0 8.5c0 .546.408.94.823 1.201.44.278 1.043.51 1.745.696C3.978 10.773 5.898 11 8 11c.099 0 .197 0 .294-.002l-1.148 1.148a.5.5 0 0 0 .708.708l2-2a.5.5 0 0 0 0-.708l-2-2a.5.5 0 1 0-.708.708l1.145 1.144L8 10c-2.04 0-3.87-.221-5.174-.569-.656-.175-1.151-.374-1.47-.575C1.012 8.639 1 8.506 1 8.5c0-.003 0-.059.112-.17.115-.112.31-.242.6-.376Zm12.993-.908a.5.5 0 0 0-.419.908c.292.134.486.264.6.377.113.11.113.166.113.169 0 .003 0 .065-.13.187-.132.122-.352.26-.677.4-.645.28-1.596.523-2.763.687a.5.5 0 0 0 .14.99c1.212-.17 2.26-.43 3.02-.758.38-.164.713-.357.96-.587.246-.229.45-.537.45-.919 0-.362-.184-.66-.412-.883-.228-.223-.535-.411-.882-.571ZM7.5 2a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1Z" />
+        </svg>
+      </div>
+      <div class="th-block-features__item-info">
+        <div class="th-block-features__item-title">
+          11/7 Support </div>
+        <div class="th-block-features__item-subtitle">
+          Dedicated Support </div>
+      </div>
+    </li>
+
+    <li class="bloc" class="th-block-features__item">
+      <div class="th-block-features__item-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" color="orange" width="46" height="46" fill="currentColor"
+          class="bi bi-fingerprint" viewBox="0 0 16 16">
+          <path
+            d="M8.06 6.5a.5.5 0 0 1 .5.5v.776a11.5 11.5 0 0 1-.552 3.519l-1.331 4.14a.5.5 0 0 1-.952-.305l1.33-4.141a10.5 10.5 0 0 0 .504-3.213V7a.5.5 0 0 1 .5-.5Z" />
+          <path
+            d="M6.06 7a2 2 0 1 1 4 0 .5.5 0 1 1-1 0 1 1 0 1 0-2 0v.332c0 .409-.022.816-.066 1.221A.5.5 0 0 1 6 8.447c.04-.37.06-.742.06-1.115V7Zm3.509 1a.5.5 0 0 1 .487.513 11.5 11.5 0 0 1-.587 3.339l-1.266 3.8a.5.5 0 0 1-.949-.317l1.267-3.8a10.5 10.5 0 0 0 .535-3.048A.5.5 0 0 1 9.569 8Zm-3.356 2.115a.5.5 0 0 1 .33.626L5.24 14.939a.5.5 0 1 1-.955-.296l1.303-4.199a.5.5 0 0 1 .625-.329Z" />
+          <path
+            d="M4.759 5.833A3.501 3.501 0 0 1 11.559 7a.5.5 0 0 1-1 0 2.5 2.5 0 0 0-4.857-.833.5.5 0 1 1-.943-.334Zm.3 1.67a.5.5 0 0 1 .449.546 10.72 10.72 0 0 1-.4 2.031l-1.222 4.072a.5.5 0 1 1-.958-.287L4.15 9.793a9.72 9.72 0 0 0 .363-1.842.5.5 0 0 1 .546-.449Zm6 .647a.5.5 0 0 1 .5.5c0 1.28-.213 2.552-.632 3.762l-1.09 3.145a.5.5 0 0 1-.944-.327l1.089-3.145c.382-1.105.578-2.266.578-3.435a.5.5 0 0 1 .5-.5Z" />
+          <path
+            d="M3.902 4.222a4.996 4.996 0 0 1 5.202-2.113.5.5 0 0 1-.208.979 3.996 3.996 0 0 0-4.163 1.69.5.5 0 0 1-.831-.556Zm6.72-.955a.5.5 0 0 1 .705-.052A4.99 4.99 0 0 1 13.059 7v1.5a.5.5 0 1 1-1 0V7a3.99 3.99 0 0 0-1.386-3.028.5.5 0 0 1-.051-.705ZM3.68 5.842a.5.5 0 0 1 .422.568c-.029.192-.044.39-.044.59 0 .71-.1 1.417-.298 2.1l-1.14 3.923a.5.5 0 1 1-.96-.279L2.8 8.821A6.531 6.531 0 0 0 3.058 7c0-.25.019-.496.054-.736a.5.5 0 0 1 .568-.422Zm8.882 3.66a.5.5 0 0 1 .456.54c-.084 1-.298 1.986-.64 2.934l-.744 2.068a.5.5 0 0 1-.941-.338l.745-2.07a10.51 10.51 0 0 0 .584-2.678.5.5 0 0 1 .54-.456Z" />
+          <path
+            d="M4.81 1.37A6.5 6.5 0 0 1 14.56 7a.5.5 0 1 1-1 0 5.5 5.5 0 0 0-8.25-4.765.5.5 0 0 1-.5-.865Zm-.89 1.257a.5.5 0 0 1 .04.706A5.478 5.478 0 0 0 2.56 7a.5.5 0 0 1-1 0c0-1.664.626-3.184 1.655-4.333a.5.5 0 0 1 .706-.04ZM1.915 8.02a.5.5 0 0 1 .346.616l-.779 2.767a.5.5 0 1 1-.962-.27l.778-2.767a.5.5 0 0 1 .617-.346Zm12.15.481a.5.5 0 0 1 .49.51c-.03 1.499-.161 3.025-.727 4.533l-.07.187a.5.5 0 0 1-.936-.351l.07-.187c.506-1.35.634-2.74.663-4.202a.5.5 0 0 1 .51-.49Z" />
+        </svg>
+      </div>
+      <div class="th-block-features__item-info">
+        <div class="th-block-features__item-title">
+          100% Safety </div>
+        <div class="th-block-features__item-subtitle">
+          Only secure payments </div>
+      </div>
+    </li>
+
+    <li class="bloc" class="th-block-features__item">
+      <div class="th-block-features__item-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" color="orange" width="46" height="46" fill="currentColor"
+          class="bi bi-piggy-bank" viewBox="0 0 16 16">
+          <path
+            d="M5 6.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm1.138-1.496A6.613 6.613 0 0 1 7.964 4.5c.666 0 1.303.097 1.893.273a.5.5 0 0 0 .286-.958A7.602 7.602 0 0 0 7.964 3.5c-.734 0-1.441.103-2.102.292a.5.5 0 1 0 .276.962z" />
+          <path fill-rule="evenodd"
+            d="M7.964 1.527c-2.977 0-5.571 1.704-6.32 4.125h-.55A1 1 0 0 0 .11 6.824l.254 1.46a1.5 1.5 0 0 0 1.478 1.243h.263c.3.513.688.978 1.145 1.382l-.729 2.477a.5.5 0 0 0 .48.641h2a.5.5 0 0 0 .471-.332l.482-1.351c.635.173 1.31.267 2.011.267.707 0 1.388-.095 2.028-.272l.543 1.372a.5.5 0 0 0 .465.316h2a.5.5 0 0 0 .478-.645l-.761-2.506C13.81 9.895 14.5 8.559 14.5 7.069c0-.145-.007-.29-.02-.431.261-.11.508-.266.705-.444.315.306.815.306.815-.417 0 .223-.5.223-.461-.026a.95.95 0 0 0 .09-.255.7.7 0 0 0-.202-.645.58.58 0 0 0-.707-.098.735.735 0 0 0-.375.562c-.024.243.082.48.32.654a2.112 2.112 0 0 1-.259.153c-.534-2.664-3.284-4.595-6.442-4.595zM2.516 6.26c.455-2.066 2.667-3.733 5.448-3.733 3.146 0 5.536 2.114 5.536 4.542 0 1.254-.624 2.41-1.67 3.248a.5.5 0 0 0-.165.535l.66 2.175h-.985l-.59-1.487a.5.5 0 0 0-.629-.288c-.661.23-1.39.359-2.157.359a6.558 6.558 0 0 1-2.157-.359.5.5 0 0 0-.635.304l-.525 1.471h-.979l.633-2.15a.5.5 0 0 0-.17-.534 4.649 4.649 0 0 1-1.284-1.541.5.5 0 0 0-.446-.275h-.56a.5.5 0 0 1-.492-.414l-.254-1.46h.933a.5.5 0 0 0 .488-.393zm12.621-.857a.565.565 0 0 1-.098.21.704.704 0 0 1-.044-.025c-.146-.09-.157-.175-.152-.223a.236.236 0 0 1 .117-.173c.049-.027.08-.021.113.012a.202.202 0 0 1 .064.199z" />
+        </svg>
+      </div>
+      <div class="th-block-features__item-info">
+        <div class="th-block-features__item-title">
+          Bajaj Finserv </div>
+        <div class="th-block-features__item-subtitle">
+          0% EMI </div>
+      </div>
+    </li>
+    <li class="th-block-features__divider" role="presentation" style="display: block;"></li>
+  </ul>
+</div>
+
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/Avon_cycles_logo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/bianchilogo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/bmclogo.png '%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/cervelologo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/colnagologo.jpeg'%}"></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/herologo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/scottlogo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/santa logo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/treklogo.png'%}"></a>
+    </div>
+    <div class="col-md-2 log">
+      <a><img class="logo" src="{% static 'images/atlas logo.jpg'%}"></a>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,154 @@
+{% extends 'page/layouts/main.html' %}
+
+{% block title %}
+Product_details | Online Shopping
+{% endblock title%}
+
+{% block content %}
+<div class="product_card_view">
+  <div class="detials_view">
+    <div>
+      <div
+        style="background-color: rgb(2, 118, 251);text-align: center;color: rgb(0, 0, 0);font-size: 35px;font-family: cursive;padding: 20px 0px;border-radius:5px 5px 0px 0px">
+        {{ cycless | capfirst}} Details
+      </div>
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'shop' %}">shop</a></li>
+        <li class="breadcrumb-item active">{{ cycless }}</li>
+      </ol>
+    </div>
+    <div class="row">
+      <div class="col-5" style="font-size: 30px;">
+        <img src="{{cycless.product_image.url}}" class="card-image-top" alt="{{cycless}}" width="250px" height="250px">
+      </div>
+      <div class="col-7">
+        <h3 style="color: rgb(255, 0, 0);text-align: center;font-weight: bolder;">{{ cycless | upper}}</h3>
+        <p style="text-align: center;min-height: 180px;padding:20px;">{{cycless.description}}</p>
+        <div style="text-align: center;">
+          <span
+            style="padding: 10px;background-color: red;color: aliceblue;font-weight: bolder;margin: 0px 20px;"><s>Rs.{{cycless.selling_price}}</s></span>
+          <span
+            style="padding: 10px;background-color: green;color: aliceblue;font-weight: bolder;margin: 0px 20px;">Rs.{{cycless.original_price}}</span>
+        </div>
+        <div class="my-3" style="text-align: center;">
+          {% if cycless.quantity > 0 %}
+          <input type="hidden" value="{{cycless.id}}" id="pid">
+
+          <p>
+          <div style="text-align: center;">
+            <button id="btnMinus" style="color: aliceblue; background-color: green;border: none; border-radius: 3px;"><i
+                class="fa fa-minus"></i></button>
+            <input type="text" name="qty" id="txtQty" value="1"
+              style="width:50px;border: 1px solid #4c494961;text-align: center;margin: 1px; ">
+            <button id="btnPlus" style="color: aliceblue; background-color: green;border: none; border-radius: 3px;"><i
+                class="fa fa-plus"></i></button>
+          </div>
+          </p>
+          <a href='{% url "buys" cycless.name %}'><button class="btn btn-success btn-sm">
+            <svg class="th-icon-cart" xmlns="http://www.w3.org/2000/svg" width="20" height="20">
+              <circle cx="7" cy="17" r="2"></circle>
+              <circle cx="15" cy="17" r="2"></circle>
+              <path d="M20,4.4V5l-1.8,6.3c-0.1,0.4-0.5,0.7-1,0.7H6.7c-0.4,0-0.8-0.3-1-0.7L3.3,3.9C3.1,3.3,2.6,3,2.1,3H0.4C0.2,3,0,2.8,0,2.6
+              V1.4C0,1.2,0.2,1,0.4,1h2.5c1,0,1.8,0.6,2.1,1.6L5.1,3l2.3,6.8c0,0.1,0.2,0.2,0.3,0.2h8.6c0.1,0,0.3-0.1,0.3-0.2l1.3-4.4
+              C17.9,5.2,17.7,5,17.5,5H9.4C9.2,5,9,4.8,9,4.6V3.4C9,3.2,9.2,3,9.4,3h9.2C19.4,3,20,3.6,20,4.4z">
+              </path>
+            </svg>Buy Now</button></a>
+          <button class="btn btn-primary" id="btnCart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+          {% else %}
+          <button class="btn btn-secondary">Out of Stock</button>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function (event) {
+    const btnPlus = document.getElementById("btnPlus");
+    const btnMinus = document.getElementById("btnMinus");
+    const txtQty = document.getElementById("txtQty");
+    const pid = document.getElementById("pid");
+    const btnCart = document.getElementById("btnCart");
+    const btnFav = document.getElementById("btnFav");
+
+    btnPlus.addEventListener("click", function () {
+      let qty = parseInt(txtQty.value, 10);
+      qty = isNaN(qty) ? 0 : qty;
+      //console.log(qty);
+      if (qty < 10) {
+        qty++;
+        txtQty.value = qty;
+      }
+    });
+
+    btnMinus.addEventListener("click", function () {
+      let qty = parseInt(txtQty.value, 10);
+      qty = isNaN(qty) ? 0 : qty;
+      //console.log(qty);
+      if (qty > 1) {
+        qty--;
+        txtQty.value = qty;
+      }
+    });
+
+    btnCart.addEventListener("click", function () {
+      let qty = parseInt(txtQty.value, 10);
+      qty = isNaN(qty) ? 0 : qty;
+      if (qty > 0) {
+        let postObj = {
+          'product_qty': qty,
+          'pid': pid.value
+        }
+        console.log(postObj);
+        fetch("/addtocart", {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': '{{ csrf_token }}',
+          },
+          body: JSON.stringify(postObj)
+        }).then(response => {
+          return response.json();
+        }).then(data => {
+          console.log(data);
+          alert(data['status']);
+        });
+      } else {
+        alert("Please Enter The Quantity");
+      }
+    });
+
+
+    btnFav.addEventListener("click", function () {
+
+      let postObj = {
+        'pid': pid.value
+      }
+      console.log(postObj);
+      fetch("/fav", {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'X-CSRFToken': '{{ csrf_token }}',
+        },
+        body: JSON.stringify(postObj)
+      }).then(response => {
+        return response.json();
+      }).then(data => {
+        //console.log(data);
+        alert(data['status']);
+      });
+
+    });
+
+  });
+
+</script>
+{% endblock content %}

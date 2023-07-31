@@ -1,0 +1,99 @@
+{% extends 'page/layouts/main.html' %}
+
+{% block title %}
+About | Cycle World
+{% endblock title%}
+
+
+{% block content %}
+{% load static %}
+
+
+
+
+<div id="cycle"class="carousel slide sliderw" data-ride="carousel">
+  <ul class="carousel-indicators">
+      <li data-target="#cycle" data-slide-to="0" class="active"></li>
+      <li data-target="#cycle" data-slide-to="1"></li>
+      <li data-target="#cycle" data-slide-to="2"></li>
+      <li data-target="#cycle" data-slide-to="3"></li>
+      <li data-target="#cycle" data-slide-to="4"></li>
+  </ul>
+  <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/cycle32.jpg'%}" width="1520" height="500">
+      </div>
+      <div class="carousel-item">
+          <img src="{% static 'images/cycle33.jpg' %}" width="1520" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/cycle34.webp' %}" width="1520" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/cycle35.jpg' %}" width="1520" height="500">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images/cycle36.webp' %}" width="1520" height="500">
+        </div>
+  </div>
+  <a class="carousel-control-prev" href="#cycle" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#cycle" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  
+</div><br><br>
+
+
+
+
+
+<h6 style="font-style: oblique; font-size: 20px;"><b>
+    <pre>
+                      Cycle World offered in-depth and unbiased reviews of the latest motorcycle models from various manufacturers.
+  These reviews covered performance, handling, design, and other relevant factors to help readers make informed decisions when purchasing a new motorcycle.
+                    Articles on improving riding skills, safety tips, and rider education were also a part of the magazine's content.
+                                      These pieces aimed to help riders enhance their abilities and ride responsibly.
+
+
+
+            The magazine often featured articles on the latest riding gear, accessories, and equipment, such as helmets, jackets, gloves, and boots. 
+                        These pieces aimed to assist readers in choosing the best gear for their specific riding needs and preferences.
+              Readers could find news updates about the motorcycle industry, including new product launches, innovations in motorcycle technology,
+                                                industry trends, and updates from major manufacturers.
+
+
+    
+                                        Cycle World provided coverage of motorcycle racing events from around the world.
+               This included reports on MotoGP, Superbike racing, motocross, and other competitive events, keeping readers updated on race results, 
+                                                      key moments, and the performance of top riders.
+                                    Cycle World often highlighted custom motorcycles and the talented builders behind them.
+                                      These features celebrated the artistry and craftsmanship of custom bike building.
+
+
+    
+                        Cycle World occasionally featured travel stories and adventure articles, showcasing exciting motorcycle routes, 
+                                          scenic rides, and motorcycle-friendly destinations around the world.
+                          These stories encouraged readers to explore new places and embrace the spirit of adventure on two wheels.
+  </pre>
+  </b></h6>
+
+
+
+<div class="container-flute " style="margin-top: 1px;">
+  <div class="row" style="margin-left: 100px;">
+    <div class="col-sm-4">
+      <img src="{% static 'images/png1-removebg-preview.png' %}" class="rounded" width="350px" height="350px">
+    </div>
+
+    <div class="col-sm-4">
+      <img src="{% static 'images/png3.png' %}" class="rounded" width="350px" height="350px">
+    </div>
+    <div class="col-sm-4">
+      <img src="{% static 'images/png18-removebg-preview.png' %}" class="rounded" width="300px" height="300px">
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

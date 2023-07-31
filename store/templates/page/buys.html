@@ -1,0 +1,71 @@
+{% extends 'page/layouts/main.html' %}
+
+{% block title %}
+Buying | Online Shopping
+{% endblock title%}
+
+{% block content %}
+{% load static %}
+<div class="down">
+ 
+
+
+<div class="bot">
+  <div style="background-color: black;text-align: center;color: white;font-size: 35px;font-family: cursive;padding: 20px 0px;border-radius:5px 5px 0px 0px">
+    {{ cycless | capfirst}} Delivery By
+  </div><br>
+  <main>
+
+    <img class="headset" src="{{cycless.product_image.url}}" alt="{{cycless.name}}" /><br>
+    <div class="set">
+      <h3 class="h3">R$ {{cycless.selling_price}}</h3>
+      <h1>R$ {{cycless.original_price}}</h1>
+      <h4 class="h4">The offer is valid until April 3, or as long as stock lasts!</h4>
+      </div>
+
+    <div id="cart-text">
+    
+      <div class="h2">
+      <form action="/order" method="POST">
+
+  
+
+          <div class="input-group tbox">
+            <input type="text" class="form-control" placeholder="Sku" id="sku" name="sku" width="50px" value="{{cycless.sku}}">
+          </div><br>
+          <div class="input-group tbox">
+            <input type="text" class="form-control" placeholder="Name" id="name" name="name" width="50px">
+          </div><br>
+          <div class="input-group tbox">
+            <input type="number" class="form-control" placeholder="Mobile Number" id="number" name="number" width="50px">
+          </div><br>
+          <div class="input-group tbox">
+            <input type="text" class="form-control" placeholder="Door no." id="door" name="door" width="50px">
+          </div> <br>
+          <div class="input-group tbox">
+            <input type="text" class="form-control" placeholder="Address" id="address" name="address" width="50px">
+          </div> <br>
+          <div class="input-group tbox">
+            <input type="text" class="form-control" placeholder="City" id="city" name="city" width="50px">
+          </div>
+
+          <div class="save">
+            <button type="submit" class="btn btn-danger" value="save">Place order</button>
+          </div><br>
+    
+    
+      </form>
+      </div>
+
+      
+
+      <h3 class="stock">
+        <i class="fa-solid fa-circle"></i> 50+ pcs. in stock.
+      </h3>
+
+    
+    </div>
+  </main>
+</div>
+</div>
+{% endblock content %}
